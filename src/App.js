@@ -56,8 +56,8 @@ function App() {
         type='text'
         id='answer'
         name='answer'
-        value={answer}
-        // onChange={(event) => setSecond(event.target.value)}
+        defaultValue={answer}
+        //onChange={(event) => setSecond(event.target.value)}
         autoComplete='off'
       />
       <div>
