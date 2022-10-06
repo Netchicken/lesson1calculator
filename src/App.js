@@ -2,6 +2,7 @@
 import "./App.css";
 import { useState } from "react";
 import CalcButtons from "./Components/calcbuttons";
+import Inputs from "./Components/inputs";
 
 function App() {
   const [answer, setAnswer] = useState("");
@@ -35,19 +36,15 @@ function App() {
   return (
     <div className='App'>
       <h1>Simple Calculator</h1>
-      <input
-        type='number'
-        value={Number(first)}
-        onChange={(event) => setFirst(event.target.value)}
+      <Inputs
+        first={first}
+        second={second}
+        setFirst={setFirst}
+        setSecond={setSecond}
+        answer={answer}
       />
-      <input
-        type='number'
-        value={Number(second)}
-        onChange={(event) => setSecond(event.target.value)}
-      />
-      =
-      <input type='number' defaultValue={answer} />
-      <CalcButtons />
+
+      <CalcButtons Calculate={Calculate} />
     </div>
   );
 }
