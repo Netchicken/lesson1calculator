@@ -1,6 +1,7 @@
 //https://morioh.com/p/2a4e533711d0  https://bobbyhadz.com/blog/react-enter-key-submit-form
 import "./App.css";
 import { useState } from "react";
+import CalcButtons from "./Components/calcbuttons";
 
 function App() {
   const [answer, setAnswer] = useState("");
@@ -46,20 +47,7 @@ function App() {
       />
       =
       <input type='number' defaultValue={answer} />
-      <div>
-        <button className='AppButton' onClick={() => Calculate("+")}>
-          +
-        </button>
-        <button className='AppButton' onClick={() => Calculate("-")}>
-          -
-        </button>
-        <button className='AppButton' onClick={() => Calculate("X")}>
-          X
-        </button>
-        <button className='AppButton' onClick={() => Calculate("/")}>
-          /
-        </button>
-      </div>
+      <CalcButtons />
     </div>
   );
 }
