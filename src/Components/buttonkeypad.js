@@ -5,7 +5,11 @@ function ButtonKeyPad(props) {
   for (let i = 0; i < 10; i++) {
     buttons.push(
       //add new buttons to the array
-      <button className='AppButton' onClick={() => props.setFirst(i)} key={i}>
+      <button
+        className='AppButton'
+        onClick={() => props.updateCalculation(i)}
+        key={i}
+      >
         {i}
       </button>
     );
