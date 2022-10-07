@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import CalcButtons from "./Components/calcbuttons";
 import Inputs from "./Components/inputs";
+import ButtonKeyPad from "./Components/buttonkeypad";
 
 function App() {
   const [answer, setAnswer] = useState("");
@@ -45,6 +46,7 @@ function App() {
       />
 
       <CalcButtons Calculate={Calculate} />
+      <ButtonKeyPad setFirst={setFirst} />
     </div>
   );
 }
