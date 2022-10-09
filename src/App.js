@@ -7,18 +7,25 @@ import ButtonKeyPad from "./Components/buttonkeypad";
 
 function App() {
   const [answer, setAnswer] = useState("");
-  const [first, setFirst] = useState(10);
-  const [second, setSecond] = useState(22);
 
-  useEffect(() => {
-    console.log("useEffect",first);
-  }, [first]);
+  const [second, setSecond] = useState();
+  const actionArray = ["+", "-", "*", "/"]; //all the actions that can be performed on the calculator
+  //---new code -------------
+  const [first, setFirst] = useState("");
+  const [calculation, setCalculation] = useState("");
+
+  // useEffect(() => {
+  //   console.log("useEffect", first);
+  // }, [first]);
 
   const updateCalculation = (value) => {
-    setFirst(first + String(value));
-    //}; //need to make the number a string
-    //lets get an output we can check
-    console.log("updateCalculation", value + " " + first);
+    console.log("updateCalculation", value + " " + calculation);
+    setCalculation(calculation + String(value)); //add the value to the growing string
+    setFirst(calculation + String(value)); //add the value to the growing string
+    //if you press = then evaluate the calculation
+    if (value == "=") {
+      setAnswer(new Function("return " + calculation)());
+    }
   };
 
   const Calculate = (value) => {
@@ -56,7 +63,7 @@ function App() {
         answer={answer}
       />
 
-      <CalcButtons Calculate={Calculate} />
+      <CalcButtons updateCalculation={updateCalculation} />
       <ButtonKeyPad updateCalculation={updateCalculation} />
     </div>
   );

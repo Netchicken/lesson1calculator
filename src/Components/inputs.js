@@ -2,15 +2,15 @@ function Inputs(props) {
   return (
     <div>
       <input
-        type='number'
-        value={Number(props.first)}
+        type='text'
+        value={props.first}
         onChange={(event) => props.setFirst(event.target.value)}
       />
-      <input
+      {/* <input
         type='number'
         value={Number(props.second)}
         onChange={(event) => props.setSecond(event.target.value)}
-      />
+      /> */}
       =
       <input type='number' defaultValue={props.answer} />
     </div>
