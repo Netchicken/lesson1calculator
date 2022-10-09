@@ -6,12 +6,6 @@ import Inputs from "./Components/inputs";
 import ButtonKeyPad from "./Components/buttonkeypad";
 
 function App() {
-  const [answer, setAnswer] = useState("");
-
-  const [second, setSecond] = useState();
-  const actionArray = ["+", "-", "*", "/"]; //all the actions that can be performed on the calculator
-  //---new code -------------
-  const [first, setFirst] = useState("");
   const [calculation, setCalculation] = useState("");
 
   // useEffect(() => {
@@ -21,50 +15,53 @@ function App() {
   const updateCalculation = (value) => {
     console.log("updateCalculation", value + " " + calculation);
     setCalculation(calculation + String(value)); //add the value to the growing string
-    setFirst(calculation + String(value)); //add the value to the growing string
+
     //if you press = then evaluate the calculation
     if (value == "=") {
-      setAnswer(new Function("return " + calculation)());
+      setCalculation(new Function("return " + calculation));
+    }   
+if (value == "clear") {
+      setCalculation("");
     }
+
   };
 
-  const Calculate = (value) => {
-    console.log("value", value);
-    if (value !== "") {
-      switch (value) {
-        case "-":
-          setAnswer(first - second);
-          break;
-        case "+":
-          setAnswer(first + second);
-          break;
-        case "X":
-          setAnswer(first * second);
-          break;
-        case "/":
-          setAnswer(first / second);
-          break;
 
-        default:
-          setAnswer("error");
-          break;
-      }
-    }
-  };
+
+  // const Calculate = (value) => {
+  //   console.log("value", value);
+  //   if (value !== "") {
+  //     switch (value) {
+  //       case "-":
+  //         setAnswer(first - second);
+  //         break;
+  //       case "+":
+  //         setAnswer(first + second);
+  //         break;
+  //       case "X":
+  //         setAnswer(first * second);
+  //         break;
+  //       case "/":
+  //         setAnswer(first / second);
+  //         break;
+
+  //       default:
+  //         setAnswer("error");
+  //         break;
+  //     }
+  //   }
+  // };
 
   return (
-    <div className='App'>
+    <div className='calc-box'>
       <h1>Simple Calculator</h1>
-      <Inputs
-        first={first}
-        second={second}
-        setFirst={setFirst}
-        setSecond={setSecond}
-        answer={answer}
-      />
+
+      <div className='output'>{calculation || "Enter a number"}</div>
 
       <CalcButtons updateCalculation={updateCalculation} />
-      <ButtonKeyPad updateCalculation={updateCalculation} />
+      <div className='digits'>
+        <ButtonKeyPad updateCalculation={updateCalculation} />
+      </div>
     </div>
   );
 }
