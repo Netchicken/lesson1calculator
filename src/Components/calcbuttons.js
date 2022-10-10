@@ -3,7 +3,7 @@ function CalcButtons(props) {
     <div>
       <button onClick={() => props.updateCalculation("+")}>+</button>
       <button onClick={() => props.updateCalculation("-")}>-</button>
-      <button onClick={() => props.updateCalculation("X")}>X</button>
+      <button onClick={() => props.updateCalculation("*")}>X</button>
       <button onClick={() => props.updateCalculation("/")}>/</button>
       <button onClick={() => props.updateCalculation("=")}>=</button>
       <button onClick={() => props.updateCalculation("clear")}>clear</button>
