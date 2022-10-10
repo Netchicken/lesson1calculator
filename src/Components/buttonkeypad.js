@@ -6,8 +6,7 @@ function ButtonKeyPad(props) {
     buttons.push(
       //add new buttons to the array
       <button
-        className='AppButton'
-        onClick={() => props.updateCalculation(i)}
+       onClick={() => props.updateCalculation(i)}
         key={i}
       >
         {i}
@@ -15,6 +14,11 @@ function ButtonKeyPad(props) {
     );
   }
 
-  return <div>{buttons}</div>;
+  return (
+    <div>
+      {buttons}
+      <button onClick={() => props.updateCalculation("del")}>del</button>
+    </div>
+  );
 }
 export default ButtonKeyPad;

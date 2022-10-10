@@ -19,14 +19,16 @@ function App() {
     //if you press = then evaluate the calculation
     if (value == "=") {
       setCalculation(new Function("return " + calculation));
-    }   
-if (value == "clear") {
+    }
+    if (value == "clear") {
       setCalculation("");
     }
-
+    if (value == "del") {
+      const result = calculation.slice(0, -1); //removes the last element from the string
+      console.log("updateCalculation DEL", result);
+      setCalculation(result);
+    }
   };
-
-
 
   // const Calculate = (value) => {
   //   console.log("value", value);
