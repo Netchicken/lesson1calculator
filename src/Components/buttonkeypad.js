@@ -17,6 +17,7 @@ function ButtonKeyPad(props) {
   return (
     <div>
       {buttons}
+      <button onClick={() => props.updateCalculation(".")}>.</button>
       <button onClick={() => props.updateCalculation("del")}>del</button>
     </div>
   );
